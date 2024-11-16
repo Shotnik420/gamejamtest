@@ -7,7 +7,7 @@ extends CharacterBody2D
 var flag_array : Array = []
 var max_speed: float = 200.0
 var acceleration: float = 800.0
-var friction: float = 600.0
+var friction: float =400.0
 var rng = RandomNumberGenerator.new()
 var walk_step :int = 0
 @onready var goo_spawner : Node2D = $GooSpawner

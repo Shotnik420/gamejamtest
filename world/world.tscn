@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://ccq6wn0a2mlha"]
+[gd_scene load_steps=12 format=3 uid="uid://ccq6wn0a2mlha"]
 
 [ext_resource type="PackedScene" uid="uid://d35oyim7g6ank" path="res://player/player.tscn" id="1_3oh6g"]
 [ext_resource type="Script" path="res://world/world.gd" id="1_44nd0"]
 [ext_resource type="Texture2D" uid="uid://b1e8t5d3lieqx" path="res://textures/cursor.png" id="3_unng0"]
 [ext_resource type="PackedScene" uid="uid://cwfxdt1fqfn8s" path="res://barrel/barrel.tscn" id="4_m3655"]
 [ext_resource type="PackedScene" uid="uid://cb4aw8aa0fgn" path="res://dog/dog.tscn" id="5_gdjhb"]
+[ext_resource type="Texture2D" uid="uid://coauqxbfwiixu" path="res://textures/Grafika_bez_nazwy.png" id="6_me5ju"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_f10xf"]
 vertices = PackedVector2Array(424.563, 324.453, 590.242, 32.7109, 594.75, 583, 410.961, 368.648, 409.25, 280.227, 378.156, 257.781, 30.0938, 27.2891, 344.859, 251.43, 314.438, 257.523, 281.258, 294.023, 31.8984, 583, 276.18, 339.75, 297.883, 381.477, 334.063, 399.57, 376.563, 396.172)
@@ -29,6 +30,7 @@ gradient = SubResource("Gradient_osldl")
 script = ExtResource("1_44nd0")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 position = Vector2(0, 3.05176e-05)
 scale = Vector2(1, 1)
 navigation_polygon = SubResource("NavigationPolygon_f10xf")
@@ -79,3 +81,22 @@ position = Vector2(185, 532)
 [node name="Dog" parent="." node_paths=PackedStringArray("Flags") instance=ExtResource("5_gdjhb")]
 position = Vector2(267, 410)
 Flags = NodePath("../Flags")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -1.0
+offset_right = 744.0
+offset_bottom = 431.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.617614, 0.606488)
+
+[node name="TextureRect" type="TextureRect" parent="UI/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("6_me5ju")
+stretch_mode = 3
