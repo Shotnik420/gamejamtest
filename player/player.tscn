@@ -1,10 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://d35oyim7g6ank"]
+[gd_scene load_steps=7 format=3 uid="uid://d35oyim7g6ank"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_pgw6b"]
 [ext_resource type="Texture2D" uid="uid://flp0ww4xrep2" path="res://textures/player.png" id="2_mg3xi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ndp0p"]
 size = Vector2(82, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q0voq"]
+size = Vector2(104, 78)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_76can"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0dy6t"]
+size = Vector2(54, 64)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_pgw6b")
@@ -15,3 +34,22 @@ texture = ExtResource("2_mg3xi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ndp0p")
+
+[node name="gooPickup" type="Area2D" parent="." groups=["player"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="gooPickup"]
+position = Vector2(85, 0)
+shape = SubResource("RectangleShape2D_q0voq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_76can")
+animation = &"new_animation"
+
+[node name="playerPickup" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="playerPickup"]
+position = Vector2(-2, 0)
+shape = SubResource("RectangleShape2D_0dy6t")
+
+[connection signal="area_entered" from="playerPickup" to="." method="_on_player_pickup_area_entered"]
+[connection signal="area_exited" from="playerPickup" to="." method="_on_player_pickup_area_exited"]

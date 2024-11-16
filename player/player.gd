@@ -35,3 +35,11 @@ func _physics_process(delta: float) -> void:
 	# Move the character using the velocity
 	move_and_slide()
 	
+
+
+
+
+
+func _on_player_pickup_area_entered(area: Area2D) -> void:
+	if area.is_in_group("pickable"):
+		area.get_parent().queue_free()
