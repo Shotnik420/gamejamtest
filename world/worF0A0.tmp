@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3 uid="uid://ccq6wn0a2mlha"]
+
+[ext_resource type="PackedScene" uid="uid://d35oyim7g6ank" path="res://player/player.tscn" id="1_3oh6g"]
+[ext_resource type="Script" path="res://world/world.gd" id="1_44nd0"]
+[ext_resource type="Texture2D" uid="uid://b1e8t5d3lieqx" path="res://textures/cursor.png" id="3_unng0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vx6tp"]
+albedo_color = Color(0.299547, 0.299547, 0.299547, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_pj8av"]
+material = SubResource("StandardMaterial3D_vx6tp")
+size = Vector2(0.875, 1)
+
+[sub_resource type="Gradient" id="Gradient_osldl"]
+colors = PackedColorArray(0.194349, 0.194349, 0.194349, 1, 0.162066, 0.162066, 0.162066, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vy37s"]
+gradient = SubResource("Gradient_osldl")
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_44nd0")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+scale = Vector2(710, 612)
+mesh = SubResource("QuadMesh_pj8av")
+texture = SubResource("GradientTexture1D_vy37s")
+
+[node name="Player" parent="." instance=ExtResource("1_3oh6g")]
+position = Vector2(-190, -196)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Cursor" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_unng0")

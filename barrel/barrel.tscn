@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwfxdt1fqfn8s"]
+
+[ext_resource type="Texture2D" uid="uid://c1n4cplr818yp" path="res://barrel/barrel.png" id="1_slnqb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5c7lf"]
+radius = 43.1045
+
+[node name="Barrel" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -48.0
+offset_top = -47.0
+offset_right = 52.0
+offset_bottom = 53.0
+texture = ExtResource("1_slnqb")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_5c7lf")
