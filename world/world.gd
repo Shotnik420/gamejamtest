@@ -11,7 +11,8 @@ func _physics_process(delta: float) -> void:
 	player_rotate_to_mouse()
 	
 func player_rotate_to_mouse():
-	player.look_at(cursor_loc)
+	if cursor_loc:
+		player.look_at(cursor_loc)
 
 func _input(event):
 	if event is InputEventMouseMotion:

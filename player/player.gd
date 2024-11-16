@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player
-var speed : float = 200.0
-var accelerate : float = 500.0
+var speed : float = 400.0
+var accelerate : float = 1200.0
 var friction: float = 1200.0
 
 func _ready() -> void:
